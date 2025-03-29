@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <?= link_tag("style.css"); ?>
 </head>
 
 <body>
     <div class="container login-container">
         <h2>Login</h2>
-        <!-- Error message for invalid login credentials -->
-        <div class="error-alert">Error Message</div>
 
-        <!-- Success message for successful login -->
-        <div class="success-alert">Success Message</div>
+        <?php
+        if (session("error")) { ?>
+            <!-- Error message for invalid login credentials -->
+            <div class="error-alert"><?php echo session("error")?></div>
+        <?php } ?>
+
+
+        <?php
+        if (session("success")) { ?>
+            <!-- Success message for successful login -->
+            <div class="success-alert"><?php echo session("success")?></div>
+        <?php } ?>
 
         <form method="post" action="Submit_URL">
             <input type="text" name="username" placeholder="Username" required>
